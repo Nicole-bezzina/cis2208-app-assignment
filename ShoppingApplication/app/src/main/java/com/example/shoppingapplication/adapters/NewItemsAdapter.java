@@ -23,11 +23,13 @@ public class NewItemsAdapter extends RecyclerView.Adapter<NewItemsAdapter.ViewHo
     private Context context;
     private List<NewItemsModel> list;
 
+    //constructor
     public NewItemsAdapter(Context context, List<NewItemsModel> list) {
         this.context = context;
         this.list = list;
     }
 
+    //inflating related layout
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,6 +42,7 @@ public class NewItemsAdapter extends RecyclerView.Adapter<NewItemsAdapter.ViewHo
         holder.newName.setText(list.get(position).getName());
         holder.newPrice.setText(String.valueOf(list.get(position).getPrice()));
 
+        //invoking detailed activity class
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

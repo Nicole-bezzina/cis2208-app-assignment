@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //getSupportActionBar().hide();
 
         //Initialising Firebase Auth
         auth = FirebaseAuth.getInstance();
@@ -37,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signup(View view) {
+        //invoking register activity
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
     }
 

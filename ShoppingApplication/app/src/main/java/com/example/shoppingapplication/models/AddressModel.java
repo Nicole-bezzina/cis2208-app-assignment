@@ -4,6 +4,7 @@ public class AddressModel {
     String userAddress;
     boolean isSelected;
 
+    //constructors
     public AddressModel() {
     }
 
@@ -12,6 +13,7 @@ public class AddressModel {
         this.isSelected = isSelected;
     }
 
+    //setters and getters
     public String getUserAddress() {
         return userAddress;
     }

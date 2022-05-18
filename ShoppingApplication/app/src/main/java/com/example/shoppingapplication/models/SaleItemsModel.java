@@ -10,6 +10,7 @@ public class SaleItemsModel implements Serializable {
     int price;
     String rating;
 
+    //constructors
     public SaleItemsModel(){
 
     }
@@ -22,6 +23,7 @@ public class SaleItemsModel implements Serializable {
         this.rating = rating;
     }
 
+    //setters and getters
     public String getImg_url() {
         return img_url;
     }

@@ -44,6 +44,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
 
+        //invoking toolbar
         toolbar = findViewById(R.id.address_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -58,13 +59,16 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         //get Data from detailed activity
         Object obj = getIntent().getSerializableExtra("item");
 
+        //Initialising Firebase authentication and firestore
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
+        //linking the view from the layout resource xml file to its activity class
         recyclerView = findViewById(R.id.address_recycler);
         paymentBtn = findViewById(R.id.payment_btn);
         addAddress = findViewById(R.id.add_address_btn);
 
+        //retrieving any addresses stored in CurrentUser collection
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         addressModelList = new ArrayList<>();
         addressAdapter = new AddressAdapter(addressModelList, getApplicationContext(), this);
@@ -84,6 +88,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
             }
         });
 
+        //retrieving amount and invoking payment activity
         paymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,6 +111,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
             }
         });
 
+        //invoking add address activity
         addAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

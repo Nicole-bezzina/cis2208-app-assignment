@@ -39,6 +39,7 @@ public class SaleItemsFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
+        //displaying items found in the firebase Sale Items collection
         saleRecyclerView = root.findViewById(R.id.sale_rec_frag);
         saleRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL,false));
         saleItemsModelList = new ArrayList<>();

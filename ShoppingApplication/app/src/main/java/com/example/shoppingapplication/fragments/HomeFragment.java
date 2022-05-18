@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
+        //linking the view from the layout resource xml file to its activity class
         progressDialog = new ProgressDialog(getActivity());
         catRecyclerView = root.findViewById(R.id.rec_category);
         newItemsRecyclerView = root.findViewById(R.id.new_item_rec);
@@ -79,6 +80,8 @@ public class HomeFragment extends Fragment {
         catShowAll = root.findViewById(R.id.category_see_all);
         newItemsShowAll = root.findViewById(R.id.new_items_see_all);
         saleItemsShowAll = root.findViewById(R.id.sale_see_all);
+
+        //the 3 see all options found in the home screen set to invoke the show all activity class
 
         catShowAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +110,7 @@ public class HomeFragment extends Fragment {
         linearLayout = root.findViewById(R.id.home_layout);
         linearLayout.setVisibility(View.GONE);
 
-        //image slider
+        //adding onto the image slider
         ImageSlider imageSlider = root.findViewById(R.id.image_slider);
         List<SlideModel> slideModels = new ArrayList<>();
 
@@ -122,7 +125,7 @@ public class HomeFragment extends Fragment {
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
-        //Category
+        //Category section - displaying items found in the firebase AllCategories collection
         catRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         categoryModelList = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(getActivity(), categoryModelList);
@@ -146,7 +149,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-        //New Items
+        //New Items section - displaying items found in the firebase New Items collection
         newItemsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         newItemsModelList = new ArrayList<>();
         newItemsAdapter = new NewItemsAdapter(getActivity(), newItemsModelList);
@@ -168,7 +171,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-        //Sale Items
+        //Sale Items section - displaying items found in the firebase SaleItems collection
         saleRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         saleItemsModelList = new ArrayList<>();
         saleItemsAdapter = new SaleItemsAdapter(getActivity(), saleItemsModelList);

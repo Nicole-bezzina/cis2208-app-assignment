@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AddAddressActivity extends AppCompatActivity {
-
     EditText name, address, city, postalCode, phoneNumber;
     Toolbar toolbar;
     Button addAddressButton;
@@ -36,6 +35,7 @@ public class AddAddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_address);
 
+        //invoking toolbar
         toolbar = findViewById(R.id.add_address_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -47,9 +47,11 @@ public class AddAddressActivity extends AppCompatActivity {
             }
         });
 
+        //Initialising Firebase authentication and firestore
         auth =  FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        //linking the view from the layout resource xml file to its activity class
         name = findViewById(R.id.ad_name);
         address = findViewById(R.id.ad_address);
         city = findViewById(R.id.ad_city);
@@ -57,6 +59,7 @@ public class AddAddressActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.ad_phone);
         addAddressButton = findViewById(R.id.ad_add_address);
 
+        //adding the address inputted by the user to the firebase collection CurrentUser
         addAddressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +86,7 @@ public class AddAddressActivity extends AppCompatActivity {
                 if (!userNumber.isEmpty()){
                     final_address += userNumber + ", ";
                 }
+                //making sure all details were filled in
                 if (!userName.isEmpty() && !userCity.isEmpty() && !userAddress.isEmpty() && !userCode.isEmpty() && !userNumber.isEmpty()) {
                     Map<String,String> map = new HashMap<>();
                     map.put("userAddress", final_address);

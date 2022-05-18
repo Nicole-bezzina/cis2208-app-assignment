@@ -23,11 +23,13 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ViewHold
     private Context context;
     private List<ShowAllModel> list;
 
+    //constructor
     public ShowAllAdapter(Context context, List<ShowAllModel> list) {
         this.context = context;
         this.list = list;
     }
 
+    //inflating related layout
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,6 +42,7 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ViewHold
         holder.priceAll.setText("€ " +list.get(position).getPrice());
         holder.nameAll.setText(list.get(position).getName());
 
+        //invoking detailed activity class
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

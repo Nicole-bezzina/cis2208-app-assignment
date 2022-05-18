@@ -22,12 +22,14 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
 
     private RadioButton selectedRadioBtn;
 
+    //constructor
     public AddressAdapter(List<AddressModel> addressModelList, Context context, SelectedAddress selectedAddress) {
         this.addressModelList = addressModelList;
         this.context = context;
         this.selectedAddress = selectedAddress;
     }
 
+    //inflating related layout
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

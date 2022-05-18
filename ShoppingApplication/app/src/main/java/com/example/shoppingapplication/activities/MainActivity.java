@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
+        //Initialising Firebase authentication
         auth = FirebaseAuth.getInstance();
 
+        //implementing bottom navigation bar
         binding.bottomNavView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.home:
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+        //invoking toolbar
         toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(homeFragment);
     }
 
+    //replacing this with home fragment
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -72,12 +76,14 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    //replacing this with search fragment
     private void loadSearchFragment(Fragment searchFragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.home_container, searchFragment);
         transaction.commit();
     }
 
+    //inflating main menu tool bar and invoking related fragment/activity
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);

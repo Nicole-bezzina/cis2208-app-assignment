@@ -10,6 +10,7 @@ public class ShowAllModel implements Serializable {
     String rating;
     String type;
 
+    //constructors
     public ShowAllModel(){
 
     }
@@ -23,6 +24,7 @@ public class ShowAllModel implements Serializable {
         this.type = type;
     }
 
+    //setters and getters
     public String getImg_url() {
         return img_url;
     }

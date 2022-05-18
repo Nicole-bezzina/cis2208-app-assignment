@@ -30,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        //getSupportActionBar().hide();
 
         //Initialising Firebase Auth
         auth = FirebaseAuth.getInstance();
@@ -42,9 +41,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         //initiate a check box
         CheckBoxTerms = (CheckBox) findViewById(R.id.checkbox_terms);
+        //used a real shopping's app terms and conditions
         String checkBoxText = "I agree to all the <a href='https://eur.shein.com/Terms-and-Conditions-a-399.html' > Terms and Conditions</a>";
         //initiate a button
         register = (Button) findViewById(R.id.register);
+
         CheckBoxTerms.setText(Html.fromHtml(checkBoxText));
         CheckBoxTerms.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -52,10 +53,12 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(CheckBoxTerms.isChecked()){
+                    //if checked, register button can be tapped
                     register.setEnabled(true);
                     Toast.makeText(getApplicationContext(), "You agreed with the terms and conditions", Toast.LENGTH_LONG).show();
                 }
                 else{
+                    //else not checked,register button cannot be tapped
                     register.setEnabled(false);
                     Toast.makeText(getApplicationContext(), "Tick the terms and conditions to continue", Toast.LENGTH_LONG).show();
                 }
@@ -64,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
         register.setEnabled(false);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
+            //invoking register method
             public void onClick(View v) {
                 register(null);
             }
@@ -89,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         else if (userPassword.length()< 8){
-            Toast.makeText(getApplicationContext(), "Password too short, requires a minumum of 8 characters long", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Password too short, requires a minimum of 8 characters long", Toast.LENGTH_LONG).show();
             return;
         }
         else {

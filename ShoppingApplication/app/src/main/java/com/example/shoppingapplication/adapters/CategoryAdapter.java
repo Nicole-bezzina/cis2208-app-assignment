@@ -24,11 +24,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     private Context context;
     private List<CategoryModel> list;
 
+    //constructor
     public CategoryAdapter(Context context, List<CategoryModel> list) {
         this.context = context;
         this.list = list;
     }
 
+    //inflating related layout
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -39,6 +39,7 @@ public class NewItemsFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
+        //displaying items found in the firebase New Items collection
         newItemsRecyclerView = root.findViewById(R.id.new_item_rec_frag);
         newItemsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL,false));
         newItemsModelList = new ArrayList<>();

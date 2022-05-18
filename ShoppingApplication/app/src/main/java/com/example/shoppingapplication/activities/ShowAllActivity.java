@@ -46,6 +46,7 @@ public class ShowAllActivity extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
 
+        //invoking toolbar
         toolbar = findViewById(R.id.show_all_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -57,12 +58,14 @@ public class ShowAllActivity extends AppCompatActivity {
             }
         });
 
+        //linking the view from the layout resource xml file to its activity class
         recyclerView = findViewById(R.id.show_all_rec);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         showAllModelList = new ArrayList<>();
         showAllAdapter = new ShowAllAdapter(this, showAllModelList);
         recyclerView.setAdapter(showAllAdapter);
 
+        //if see all option is chosen
         if(type == null || type.isEmpty()){
             firestore.collection("ShowAll")
                     .get()
@@ -80,6 +83,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if tools category is chosen
         if (type != null && type.equalsIgnoreCase("tools")) {
             firestore.collection("ShowAll").whereEqualTo("type", "tools")
                     .get()
@@ -97,6 +101,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if shoes category is chosen
         if (type != null && type.equalsIgnoreCase("shoes")) {
             firestore.collection("ShowAll").whereEqualTo("type", "shoes")
                     .get()
@@ -114,6 +119,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if jewerly category is chosen
         if (type != null && type.equalsIgnoreCase("jewerly")) {
             firestore.collection("ShowAll").whereEqualTo("type", "jewerly")
                     .get()
@@ -131,6 +137,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if bags category is chosen
         if (type != null && type.equalsIgnoreCase("bags")) {
             firestore.collection("ShowAll").whereEqualTo("type", "bags")
                     .get()
@@ -148,6 +155,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if makeup category is chosen
         if (type != null && type.equalsIgnoreCase("makeup")) {
             firestore.collection("ShowAll").whereEqualTo("type", "makeup")
                     .get()
@@ -164,6 +172,8 @@ public class ShowAllActivity extends AppCompatActivity {
                         }
                     });
         }
+
+        //if care category is chosen
         if (type != null && type.equalsIgnoreCase("care")) {
             firestore.collection("ShowAll").whereEqualTo("type", "care")
                     .get()
@@ -181,6 +191,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if pants category is chosen
         if (type != null && type.equalsIgnoreCase("pants")) {
             firestore.collection("ShowAll").whereEqualTo("type", "pants")
                     .get()
@@ -198,6 +209,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if dress category is chosen
         if (type != null && type.equalsIgnoreCase("dress")) {
             firestore.collection("ShowAll").whereEqualTo("type", "dress")
                     .get()
@@ -215,6 +227,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if top category is chosen
         if (type != null && type.equalsIgnoreCase("top")) {
             firestore.collection("ShowAll").whereEqualTo("type", "top")
                     .get()
@@ -232,6 +245,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if sunglasses category is chosen
         if (type != null && type.equalsIgnoreCase("sunglasses")) {
             firestore.collection("ShowAll").whereEqualTo("type", "sunglasses")
                     .get()
@@ -249,6 +263,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
         }
 
+        //if sweater category is chosen
         if (type != null && type.equalsIgnoreCase("sweater")) {
             firestore.collection("ShowAll").whereEqualTo("type", "sweater")
                     .get()

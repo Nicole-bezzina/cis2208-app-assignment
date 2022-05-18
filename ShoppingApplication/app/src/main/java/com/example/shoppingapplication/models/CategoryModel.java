@@ -7,6 +7,7 @@ public class CategoryModel implements Serializable {
     String name;
     String type;
 
+    //constructors
     public CategoryModel(){
 
     }
@@ -17,6 +18,7 @@ public class CategoryModel implements Serializable {
         this.type = type;
     }
 
+    //setters and getters
     public String getImg_url() {
         return img_url;
     }

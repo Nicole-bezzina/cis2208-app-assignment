@@ -28,7 +28,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        //Toolbar
+        //invoking toolbar
         toolbar = findViewById(R.id.payment_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -41,6 +41,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
         amount = getIntent().getDoubleExtra("amount",0.0);
 
+        //linking the view from the layout resource xml file to its activity class
         subTotal = findViewById(R.id.sub_total);
         discount = findViewById(R.id.discount);
         shipping = findViewById(R.id.shipping);
@@ -49,14 +50,13 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
         subTotal.setText("€"+amount);
 
+        //payment button invoking payment method
         paymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 paymentMethod();
             }
         });
-
-
     }
 
     private void paymentMethod() {
@@ -73,7 +73,6 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             options.put("description", "Reference No. #123456");
             //Image to be display
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
-            //options.put("order_id", "order_9A33XWu170gUtm");
             // Currency type
             options.put("currency", "EUR");
             //double total = Double.parseDouble(mAmountText.getText().toString());

@@ -48,17 +48,18 @@ public class DetailedActivity extends AppCompatActivity {
     ShowAllModel showAllModel = null;
 
     FirebaseAuth auth;
-    private FirebaseFirestore firestore;
+    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
 
-
+        //Initialising Firebase authentication and firestore
         firestore = FirebaseFirestore.getInstance();
         auth =  FirebaseAuth.getInstance();
 
+        //invoking toolbar
         toolbar = findViewById(R.id.detailed_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -82,6 +83,7 @@ public class DetailedActivity extends AppCompatActivity {
             showAllModel = (ShowAllModel) obj;
         }
 
+        //linking the view from the layout resource xml file to its activity class
         detailedImg = findViewById(R.id.detailed_img);
         quantity = findViewById(R.id.quantity);
         name = findViewById(R.id.detailed_name);
@@ -127,7 +129,7 @@ public class DetailedActivity extends AppCompatActivity {
             totalPrice = showAllModel.getPrice() * totalQuantity;
         }
 
-        //Buy Now
+        //Buy Now button invoking address activity
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +150,7 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
 
-        //Add to Cart
+        //Add to Cart button invoking addToCart method
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,6 +158,7 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
 
+        //plus icon image set as a button in order to increase quantity and price according to the item
         addItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,6 +180,7 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
 
+        //minus icon image set as a button in order to decrease quantity and price according to the item
         removeItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,9 +194,11 @@ public class DetailedActivity extends AppCompatActivity {
         });
     }
 
+
     private void addToCart() {
         String saveCurrentTime, saveCurrentDate;
 
+        //using calender to store current date and time of when the items were put into cart
         Calendar calForDate = Calendar.getInstance();
 
         SimpleDateFormat currentDate = new SimpleDateFormat("MM dd,yyyy");
@@ -201,6 +207,7 @@ public class DetailedActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calForDate.getTime());
 
+        //cart items details
         final HashMap<String,Object> cartMap = new HashMap<>();
         cartMap.put("productName",name.getText().toString());
         cartMap.put("productPrice",price.getText().toString());
@@ -209,6 +216,7 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("totalQuantity", quantity.getText().toString());
         cartMap.put("totalPrice", totalPrice);
 
+        //items added to cart added to collection
         firestore.collection("AddToCart")
                 .document(auth.getCurrentUser().getUid())
                 .collection("User").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {

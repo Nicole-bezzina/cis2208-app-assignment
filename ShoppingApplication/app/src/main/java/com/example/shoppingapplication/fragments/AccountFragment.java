@@ -27,11 +27,13 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_account, container, false);
 
+        //linking the view from the layout resource xml file to its activity class
         settings = root.findViewById(R.id.settings);
         vouchers = root.findViewById(R.id.vouchers);
         orders = root.findViewById(R.id.orders);
         help = root.findViewById(R.id.help);
 
+        //settings button  set to invoke settings activity class
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +42,7 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        //vouchers button  set to invoke vouchers activity class
         vouchers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +51,7 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        //orders button  set to invoke orders activity class
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +60,7 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        //help button  set to invoke help and feedback activity class
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

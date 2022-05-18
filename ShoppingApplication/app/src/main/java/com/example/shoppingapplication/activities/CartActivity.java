@@ -47,9 +47,11 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
+        //Initialising Firebase authentication and firestore
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
+        //invoking toolbar
         toolbar = findViewById(R.id.my_cart_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,10 +62,12 @@ public class CartActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         //get data from my card adapter
         LocalBroadcastManager.getInstance(this)
                 .registerReceiver(mMessageReceiver, new IntentFilter("MyTotalAmount"));
 
+        //linking the view from the layout resource xml file to its activity class
         overAllAmount = findViewById(R.id.textViewTotal);
         buyNow = findViewById(R.id.buy_now);
         recyclerView = findViewById(R.id.rec_cart);
@@ -72,6 +76,7 @@ public class CartActivity extends AppCompatActivity {
         myCartAdapter = new MyCartAdapter(this, myCartModelList);
         recyclerView.setAdapter(myCartAdapter);
 
+        //retrieving items stored in AddToCart collection of the user currently logged in
         firestore.collection("AddToCart")
                 .document(auth.getCurrentUser().getUid())
                 .collection("User")
@@ -91,6 +96,7 @@ public class CartActivity extends AppCompatActivity {
                     }
                 });
 
+        //invoking address activity
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

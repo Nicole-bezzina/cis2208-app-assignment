@@ -43,6 +43,7 @@ public class SearchFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_search, container, false);
         db = FirebaseFirestore.getInstance();
 
+        //implementing the search feature
         recyclerViewSearch = root.findViewById(R.id.search_rec);
         searchBox = root.findViewById(R.id.search_box);
         showAllModelList = new ArrayList<>();
@@ -77,6 +78,7 @@ public class SearchFragment extends Fragment {
         return root;
     }
 
+    //search item by name field found in firebase collection ShowAll
     private void searchItem(String type) {
         if (!type.isEmpty()){
             db.collection("ShowAll").whereEqualTo("name", type).get()

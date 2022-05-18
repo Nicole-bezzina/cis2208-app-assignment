@@ -34,6 +34,7 @@ public class HelpActivity extends AppCompatActivity {
 
         submit = findViewById(R.id.submit);
 
+        //invoking toolbar
         toolbar = findViewById(R.id.help_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -45,6 +46,7 @@ public class HelpActivity extends AppCompatActivity {
             }
         });
 
+        //linking the view from the layout resource xml file to its activity class
         TextView linkTextView1 = findViewById(R.id.faq1);
         linkTextView1.setMovementMethod(LinkMovementMethod.getInstance());
         TextView linkTextView2 = findViewById(R.id.faq2);
@@ -52,6 +54,7 @@ public class HelpActivity extends AppCompatActivity {
         TextView linkTextView3 = findViewById(R.id.faq3);
         linkTextView3.setMovementMethod(LinkMovementMethod.getInstance());
 
+        //submit button invoking submit method
         submit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -63,6 +66,7 @@ public class HelpActivity extends AppCompatActivity {
     public void submit(View view) {
         feedback = findViewById(R.id.contactUs);
 
+        //storing user feedback in firebase realtime database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
         ref.addValueEventListener(new ValueEventListener() {

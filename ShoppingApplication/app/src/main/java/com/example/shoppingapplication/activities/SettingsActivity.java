@@ -38,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        //invoking toolbar
         toolbar = findViewById(R.id.settings_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -49,6 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        //Initialising Firebase authentication and firestore
         auth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -63,6 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    //updating current user's information
     public void update (View view){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 

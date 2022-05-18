@@ -9,6 +9,7 @@ public class MyCartModel {
     int totalPrice;
     String documentId;
 
+    //constructors
     public MyCartModel() {
     }
 
@@ -21,6 +22,7 @@ public class MyCartModel {
         this.totalPrice = totalPrice;
     }
 
+    //setters and getters
     public String getDocumentId() {
         return documentId;
     }
